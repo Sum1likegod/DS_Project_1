@@ -67,6 +67,5 @@ def process_support_data(file_path):
     return df
 
 # How to use it for your freelancing gig:
-excel_file = 'C:\Different Folder\Code\python\Restart\Book1.xlsx'
-cleaned_df = process_support_data(excel_file)
+cleaned_df = process_support_data('Book1.xlsx')
 print(cleaned_df)
