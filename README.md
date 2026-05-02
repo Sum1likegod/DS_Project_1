@@ -11,7 +11,7 @@ This project is a Python-based data processing tool designed to automate the cle
 
 ## 🚀 How It Works
 The script follows an **ETL (Extract, Transform, Load)** workflow:
-1. **Extract:** Loads raw data from a CSV or Python Dictionary.
+1. **Extract:** Loads raw data from an excel file, CSV or Python Dictionary.
 2. **Transform:** Standardizes text and fixes missing numerical values.
 3. **Load:** Outputs a cleaned DataFrame and saves a visualization of the results.
 

@@ -55,12 +55,14 @@ def process_support_data(file_path):
     # This finds all numerical columns and fills NaNs with the mean
     for col in df.select_dtypes(include=['number']).columns:
         df[col] = df[col].fillna(df[col].mean())
+        print(col)
 
     # 3. Analyze & Visualize
     if 'department' in df.columns:
         report = df['department'].value_counts()
         report.plot(kind='bar', color='green')
         plt.title('Tickets per Department')
+        plt.xlabel('Department')
         plt.ylabel('Count')
         plt.show()
 
@@ -68,4 +70,4 @@ def process_support_data(file_path):
 
 # How to use it for your freelancing gig:
 cleaned_df = process_support_data('Book1.xlsx')
-print(cleaned_df)
+# print(cleaned_df)
