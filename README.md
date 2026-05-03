@@ -24,4 +24,4 @@ The script follows an **ETL (Extract, Transform, Load)** workflow:
 
 ## 💻 Tech Stack
 - **Language:** Python 3.x
-- **Libraries:** Pandas, NumPy, Matplotlib
+- **Libraries:** Pandas, NumPy, Matplotlib, Pathlib
