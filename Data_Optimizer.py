@@ -16,7 +16,7 @@ def process_support_data(file_path):
     # 2. Clean Data (Generalized logic)
     # This automatically finds all 'object' (text) columns and strips/lowers them
     for col in df.select_dtypes(include=['object', 'string']).columns:
-        df[col] = df[col].str.strip().str.lower()
+        df[col] = df[col].str.strip().str.capitalize()
 
     # This finds all numerical columns and fills NaNs with the mean
     for col in df.select_dtypes(include=['number']).columns:
@@ -24,12 +24,12 @@ def process_support_data(file_path):
 
 
     # 3. Analyze & Visualize
-    if 'department' in df.columns:
-        report = df['department'].value_counts()
+    if 'Field' in df.columns:
+        report = df['Field'].value_counts()
         report.plot(kind='bar', color='green')
-        plt.title('Tickets per Department')
-        plt.xlabel('Department')
-        plt.ylabel('Count')
+        plt.title('Employee per Field')
+        plt.xlabel('Field')
+        plt.ylabel('Employee')
         plt.show()
 
     # 4. Save to the new folder
