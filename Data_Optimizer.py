@@ -15,14 +15,14 @@ def process_support_data(file_path):
 
     # 2. Clean Data (Generalized logic)
     # This automatically finds all 'object' (text) columns and strips/lowers them
-    for col in df.select_dtypes(include=['object']).columns:
+    for col in df.select_dtypes(include=['object', 'string']).columns:
         df[col] = df[col].str.strip().str.lower()
 
     # This finds all numerical columns and fills NaNs with the mean
     for col in df.select_dtypes(include=['number']).columns:
         df[col] = df[col].fillna(df[col].mean())
-        print(col)
 
+    df.to_excel('Excel_Test_File_Cleaned.xlsx', index=False)
     # 3. Analyze & Visualize
     if 'department' in df.columns:
         report = df['department'].value_counts()
