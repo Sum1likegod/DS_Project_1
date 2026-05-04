@@ -22,7 +22,7 @@ def process_support_data(file_path):
     for col in df.select_dtypes(include=['number']).columns:
         df[col] = df[col].fillna(df[col].mean())
 
-    df.to_excel('Excel_Test_File_Cleaned.xlsx', index=False)
+
     # 3. Analyze & Visualize
     if 'department' in df.columns:
         report = df['department'].value_counts()
@@ -32,15 +32,20 @@ def process_support_data(file_path):
         plt.ylabel('Count')
         plt.show()
 
-    return df
+    # 4. Save to the new folder
+    output_folder = Path(__file__).parent / "processed_data"
+    output_folder.mkdir(exist_ok=True)
+    df.to_excel(output_folder / 'Book1_Cleaned.xlsx', index=False)
 
+
+    return None
 
 
 if __name__ == "__main__":
-    file_path_universal = Path(__file__).parent / "Book1.xlsx"
+    base_path = Path(__file__).parent
+    input_file = base_path / "raw_data" / "Book1.xlsx"
 
     ## For using it as the Jupyter notebook use this instead
     ## file_path = Path("your_example_file.xlsx")
 
-    cleaned_df = process_support_data(file_path_universal)
-    # print(cleaned_df)
+    cleaned_df = process_support_data(input_file)
