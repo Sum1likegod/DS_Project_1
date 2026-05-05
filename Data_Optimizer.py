@@ -12,6 +12,7 @@ def process_support_data(file_path):
         df = pd.read_excel(file_path)
     except FileNotFoundError:
         return "Error: File not found. Please check the path."
+        return None
 
     # 2. Clean Data (Generalized logic)
     # This automatically finds all 'object' (text) columns and strips/lowers them
@@ -35,10 +36,12 @@ def process_support_data(file_path):
     # 4. Save to the new folder
     output_folder = Path(__file__).parent / "processed_data"
     output_folder.mkdir(exist_ok=True)
+
+
     df.to_excel(output_folder / 'Book1_Cleaned.xlsx', index=False)
+    print(f"Success! Cleaned file saved at: {output_folder}")
 
-
-    return None
+    return df
 
 
 if __name__ == "__main__":
