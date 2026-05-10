@@ -41,8 +41,14 @@ def process_support_data(file_path):
 
     today = datetime.now().strftime("%Y-%m-%d %H-%M")
     output_name = f"{file_path.stem}_Cleaned_{today}.xlsx"
-    df.to_excel(output_folder / f"{output_name}", index=False)
-    print(f"Success! Cleaned file saved at: {output_folder}")
+
+    try:
+        df.to_excel(output_folder / f"{output_name}", index=False)
+        print(f"Success! Saved to {output_folder}")
+    except PermissionError:
+        print(f"❌ Error: Could not save file. Please close '{output_name}' in Excel and try again.")
+    except Exception as e:
+        print(f"❌ An unexpected error occurred: {e}")
 
     return df
 
