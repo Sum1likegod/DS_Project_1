@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
+from datetime import datetime
+
 
 
 def process_support_data(file_path):
@@ -37,8 +39,9 @@ def process_support_data(file_path):
     output_folder = Path(__file__).parent / "processed_data"
     output_folder.mkdir(exist_ok=True)
 
-
-    df.to_excel(output_folder / 'Book1_Cleaned.xlsx', index=False)
+    today = datetime.now().strftime("%Y-%m-%d %H-%M")
+    output_name = f"{file_path.stem}_Cleaned_{today}.xlsx"
+    df.to_excel(output_folder / f"{output_name}", index=False)
     print(f"Success! Cleaned file saved at: {output_folder}")
 
     return df
